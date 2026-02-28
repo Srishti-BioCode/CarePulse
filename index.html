@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CarePulse – Senior Citizen Care</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>CarePulse</h1>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#health">Health</a>
+    <a href="#sos">SOS</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Caring Beyond Distance</h2>
+  <p>
+    CarePulse is a healthcare website designed for senior citizens
+    to monitor health and handle emergencies easily.
+  </p>
+  <button onclick="welcome()">Get Started</button>
+</section>
+
+<section id="services">
+  <h2 class="title">Our Services</h2>
+
+  <div class="cards">
+    <div class="card">
+      <h3>24/7 Support</h3>
+      <p>Emergency assistance anytime.</p>
+    </div>
+
+    <div class="card">
+      <h3>Health Tracking</h3>
+      <p>Monitor BP and Sugar levels.</p>
+    </div>
+
+    <div class="card">
+      <h3>Doctor Help</h3>
+      <p>Easy consultation with doctors.</p>
+    </div>
+  </div>
+</section>
+
+<section id="health">
+  <h2 class="title">Quick Health Check</h2>
+
+  <div class="health-box">
+    <input type="number" id="bp" placeholder="Blood Pressure">
+    <input type="number" id="sugar" placeholder="Sugar Level">
+    <button onclick="checkHealth()">Check Health</button>
+    <p id="result"></p>
+  </div>
+</section>
+
+<section id="sos" class="sos">
+  <h2>Emergency SOS</h2>
+  <p>Press the button in case of emergency</p>
+  <button onclick="sos()">SOS</button>
+</section>
+
+<footer>
+  © 2026 CarePulse | College Project
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
