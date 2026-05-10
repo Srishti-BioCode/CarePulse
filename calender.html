@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title style="color: cadetblue; background-color: beige;">SET CALENDER</title>
+    </head>
+   
+   <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css' rel='stylesheet' />
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+
+<div id="calendar-container" style="padding: 20px; background: #ffffff; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin: 20px;">
+    <h2 style="color: #008080; text-align: center; font-size: 28px; margin-bottom: 20px;">📅 Doctor's Appointment Calendar</h2>
+    
+    <div id='calendar'></div>
+</div>
+ <a href="index.html" class="back-btn">← Wapas Home Par Jayein</a>
+<style>
+    /* Seniors ke liye calendar ke text ko bada aur clear karne ke liye */
+    .fc-event { cursor: pointer; font-size: 16px; padding: 3px; }
+    .fc-toolbar-title { font-size: 24px !important; color: #00C48C; }
+    .fc-daygrid-day-number { font-size: 18px; color: #333; font-weight: bold; }
+    .fc-col-header-cell-cushion { font-size: 18px; color: #555; }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek'
+        },
+        selectable: true,
+        editable: true,
+        
+        // Jab senior kisi date par click karein
+        dateClick: function(info) {
+            var title = prompt('Kiske liye appointment book karna hai? (e.g., Dr. Sharma):');
+            var time = prompt('Kitne baje? (e.g., 10:30 AM):');
+            
+            if (title && time) {
+                calendar.addEvent({
+                    title: title + ' (' + time + ')',
+                    start: info.dateStr,
+                    allDay: true,
+                    backgroundColor: '#00C48C',
+                    borderColor: '#008080'
+                });
+                alert("Appointment Calendar mein add ho gaya!");
+            }
+        },
+
+        // Pehle se set appointments (Sample Data)
+        events: [
+            {
+                title: 'Checkup: Dr. Verma',
+                start: '2026-03-05',
+                color: '#FF0000'
+            }
+        ]
+    });
+
+    calendar.render();
+});
+
+ function speak(text) {
+            window.speechSynthesis.cancel();
+            let msg = new SpeechSynthesisUtterance(text);
+            msg.lang = 'hi-IN';
+            window.speechSynthesis.speak(msg);
+        }
+        document.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', e => {
+        // Sirf internal links ke liye (jo dusre page par le jayein)
+        if (link.hostname === window.location.hostname && link.hash === "") {
+            e.preventDefault();
+            let destination = link.href;
+            
+            // Body ko fade out karein
+            document.body.style.opacity = '0';
+            document.body.style.transition = '0.5s';
+            
+            // 0.5 second baad naya page kholein
+            setTimeout(() => {
+                window.location.href = destination;
+            }, 500);
+        }
+    });
+});
+</script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+  // 1. AAPKI CONFIG (Yahan apni API Key aur IDs dalo jo screen par dikh rahi hain)
+  const firebaseConfig = {
+    apiKey: "AIzaSyD0GUjFOHfRrCqnyRdLiQYMreN67U9_gAg",
+  authDomain: "carepulse-63d5c.firebaseapp.com",
+  projectId: "carepulse-63d5c",
+  storageBucket: "carepulse-63d5c.firebasestorage.app",
+  messagingSenderId: "955333385466",
+  appId: "1:955333385466:web:38e7c6106744c46c2cfd43",
+  measurementId: "G-VLE3CXBM5Q"
+};
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // --- FEATURE 1: APPOINTMENT FORM ---
+  window.handleFormSubmit = async function(event) {
+    event.preventDefault();
+    const name = document.querySelector('input[placeholder="Naam likhein"]').value;
+    const phone = document.querySelector('input[placeholder="Mobile Number"]').value;
+
+    try {
+      await addDoc(collection(db, "appointments"), {
+        patientName: name,
+        patientPhone: phone,
+        timestamp: new Date()
+      });
+      alert("Success! Data Firebase mein save ho gaya.");
+    } catch (e) {
+      alert("Error: " + e.message);
+    }
+  };
+</script>
+</html>
