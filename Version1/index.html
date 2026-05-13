@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarePulse | Senior Care Reimagined</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💙</text></svg>">
+    <style>
+        /* 1. Animation Define Karein */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 2. Poore Body par Animation Apply Karein */
+body {
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* 3. Link Click Transition (Optional) */
+a {
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.2);
+}
+        /* 1. DESIGN VARIABLES */
+        :root {
+            --primary-black: #121212;
+            --card-bg: #1E1E1E;
+            --text-white:var(--bg-color);
+            --accent-teal: #00C48C;
+            --emergency-coral: #FF7A59;
+            --font-main: 'Inter', sans-serif;
+        }
+/* Light Mode (Auto Switcher) */
+:root {
+    --bg-color: #121212;
+    --text-color:black;
+    --card-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Agar user ka system Light mode mein hai, to apne aap badal jayega */
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg-color: #f8fafc;
+        --text-color: #121212;
+        --card-bg: black;
+        --card-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    body { background-color: var(--bg-color); color: var(--text-color); }
+    .card { background: var(--card-bg); border: 2px solid var(--primary-black); box-shadow: var(--card-shadow); }
+    .form-container { background: #eee; border: 2px solid #ccc; color: black; }
+    .input-group input { background: white; color: black; border: 2px solid #999; }
+}
+
+/* Scroll to Top Button */
+#scrollTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 230px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: var(--accent-teal);
+    color:black;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--primary-black);
+            color: var(--text-white);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            font-size: 18px; /* Base size for seniors */
+            transition: all 0.3s ease;
+        }
+
+        /* 2. STICKY NAVIGATION */
+        nav {
+            position: sticky;
+            top: 0;
+            background:wheat;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 2px solid #333;
+            /* General Navbar Styling */
+
+}
+
+        .logo { font-size: 28px; font-weight: 900; color: var(--accent-teal); }
+        .nav-links a { color: black; text-decoration: none; margin-left: 30px; font-weight: 700; }
+
+        /* 3. HERO SECTION */
+        .hero { display: flex; flex-wrap: wrap; padding: 60px 5%; align-items: center; gap: 40px; }
+        .hero-text { flex: 1; min-width: 350px; }
+        .hero-text h1 { font-size: 60px; font-weight: 900; line-height: 1.1; margin-bottom: 20px; }
+        .hero-text p { font-size: 24px; margin-bottom: 30px; color: #BBB; }
+
+        .hero-image { 
+            flex: 1; min-width: 350px; border-radius: 20px; overflow: hidden; 
+            border: 4px solid #333; height: 450px; background: #222;
+        }
+        .hero-image img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* 4. BUTTONS & UI */
+        .btn-main {
+            background-color: var(--emergency-coral);
+            color: black; padding: 20px 40px; font-size: 24px; 
+            font-weight: bold; border: none; border-radius: 12px; cursor: pointer;
+        }
+        .audio-btn {
+            background: #333; color: white; border: 1px solid #555;
+            padding: 8px 15px; border-radius: 20px; cursor: pointer; margin-bottom: 10px;
+        }
+
+        /* 5. SERVICE CARDS */
+        .services { padding: 60px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: var(--card-bg); padding: 40px; border-radius: 20px; border: 2px solid #333; text-align: center; }
+        .card h3 { font-size: 32px; margin: 20px 0; }
+
+        /* 6. APPOINTMENT FORM */
+        #appointment { padding: 80px 5%; background: #1a1a1a; }
+        .form-container { max-width: 700px; margin: 0 auto; background: #222; padding: 40px; border-radius: 20px; border: 2px solid #444; }
+        .input-group { margin-bottom: 25px; }
+        .input-group label { display: block; font-size: 22px; font-weight: bold; margin-bottom: 10px; color: var(--accent-teal); }
+        .input-group input { width: 100%; padding: 18px; font-size: 20px; border-radius: 12px; border: 2px solid #555; background: #000; color: white; }
+        
+        .radio-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
+        .radio-card { background: #333; padding: 20px; border-radius: 12px; cursor: pointer; border: 3px solid transparent; text-align: center; }
+        .radio-card input { display: none; }
+        .radio-card:has(input:checked) { border-color: var(--accent-teal); background: #004d40; }
+
+        /* 7. FLOATING TOOLS (WhatsApp & Help) */
+        .whatsapp-btn {
+            position: fixed; bottom: 130px; right: 30px; background: #25D366; 
+            color: white; padding: 15px 25px; border-radius: 50px; display: flex; 
+            align-items: center; gap: 10px; text-decoration: none; font-weight: bold; z-index: 1001;
+        }
+        .help-btn {
+            position: fixed; bottom: 30px; right: 30px; width: 90px; height: 90px; 
+            background: var(--emergency-coral); color: white; border-radius: 50%; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            font-weight: 900; text-decoration: none; border: 4px solid white; z-index: 1001;
+        }
+
+        /* 8. ACCESSIBILITY TOGGLES (A+ / A-) */
+        .size-tools { position: fixed; left: 20px; bottom: 30px; display: flex; flex-direction: column; gap: 10px; z-index: 1001; }
+        .size-btn { padding: 15px; background: white; color: black; border: none; font-weight: 900; border-radius: 10px; cursor: pointer; }
+
+        @media (max-width: 768px) { .hero-text h1 { font-size: 40px; } .nav-links { display: none; } }
+    
+    </style>
+</head>
+<body>
+
+<style>
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+</style>
+    <div class="size-tools">
+        <button class="size-btn" onclick="changeFontSize(2)">A+</button>
+        <button class="size-btn" onclick="changeFontSize(-2)">A-</button>
+    </div>
+<button onclick="toggleMode()" id="mode-btn" style="padding: 10px 20px; cursor: pointer; border-radius: 20px; font-weight: bold;">
+    🌙 Dark Mode
+</button>
+    <nav>
+      
+         
+    <div class="logo" style="display: flex; align-items: center; gap: 10px;">
+        <span style="background: var(--accent-teal); color: white; padding: 5px 12px; border-radius: 12px; font-size: 24px;"><image src="image4.jpg" height="25"></image></span>
+        <span style="letter-spacing: 1px;">Care<span style="color: var(--accent-teal);">Pulse</span></span>
+    </div>
+   
+<button onclick="startVoice()" title="Voice Command" style="background: #007bff; color: white; border: none; padding: 10px 15px; border-radius: 50%; cursor: pointer; font-size: 20px;">
+        🎤
+    </button>
+    
+       <div class="nav-links">
+              <a href="#">Home</a>
+           
+            <a href="#services">Services</a>
+            <a href="#appointment">Book Now</a>
+           
+            <a href="about.html">About Us</a> <a href="contact.html">Contact Us</a> 
+            <a href="calender.html">Set Calender</a>
+            <a href="medicinereminder.html">Medicine reminder</a> 
+
+    
+        
+    </nav>
+
+    <header class="hero">
+        <div class="hero-text">
+            <button class="audio-btn" onclick="speak('Care pulse mein aapka swagat hai. Hum seniors ke liye behtareen care pradan karte hain.')">🔊 Suniye</button>
+            <h1>Compassionate Care at the <span style="color:var(--accent-teal)">Pulse</span> of Your Life.</h1>
+            <p>Bina kisi pareshani ke, ghar baithe behtareen medical support paiye.</p>
+            <a href="#appointment" style="text-decoration:none;"><button class="btn-main">Book a Free Consultation</button></a>
+        
+        </div>
+        <div class="hero-image">
+            <img src="image2.jpg" alt="Caregiver Support">
+        </div>
+    </header>
+
+    <section class="services" id="services">
+        <div class="card">
+            <button class="audio-btn" onclick="speak('Medical monitoring: 24 ghante doctor alerts.')">🔊 Suniye</button>
+            <div style="font-size: 50px;">🩺</div>
+            <h3>Medical Monitoring</h3>
+            <p>24/7 health tracking aur doctor alerts.</p>
+        </div>
+        <div class="card">
+            <button class="audio-btn" onclick="speak('Companion Care: Hum aapke liye ek dost bhejte hain.')">🔊 Suniye</button>
+            <div style="font-size: 50px;">🤝</div>
+            <h3>Companion Care</h3>
+            <p>Dosti aur sahara, taaki aap akela mehsoos na karein.</p>
+        </div>
+        <div class="card">
+            <button class="audio-btn" onclick="speak('water intake tracker: humne apke liye paani intake ka tracking system rakha hai')">🔊 Suniye</button>
+            <div style="font-size: 50px;">💧</div>
+            <h3>Water intake tracking </h3>
+            <p>water tracking system, so that apko dehydration se bacha saken.</p>
+            <a href="tracker.html">click here to start tracking!</a>
+        </div>
+        
+        
+    </section>
+
+    <section id="appointment">
+        <div class="form-container">
+            <h2 style="font-size: 36px; margin-bottom: 20px; color: var(--accent-teal);">📅 Appointment Book Karein</h2>
+            <form onsubmit="event.preventDefault(); alert('Dhanyawad! Hum jald hi call karenge.');">
+                <div class="input-group">
+                    <label>Aapka Naam:</label>
+                    <input type="text" placeholder="Naam likhein" required>
+                </div>
+                <div class="input-group">
+                    <label>Phone Number:</label>
+                    <input type="tel" placeholder="Mobile Number" required>
+                </div>
+                <div class="input-group">
+                    <label>Kya Chahiye?</label>
+                    <div class="radio-options">
+                        <label class="radio-card"><input type="radio" name="s" checked><span>🩺 Medical</span></label>
+                        <label class="radio-card"><input type="radio" name="s"><span>🤝 Sahara</span></label>
+                    </div>
+                </div>
+                <button type="submit" class="btn-main" style="width:100%">Submit (Bhejiye) ✅</button>
+            </form>
+        </div>
+    </section>
+
+    <a href="https://wa.me/9454523855" class="whatsapp-btn">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="30">
+        WhatsApp Help
+    </a>
+    <a href="tel:100" class="help-btn">📞 HELP</a>
+
+    <script>
+        document.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', e => {
+        // Sirf internal links ke liye (jo dusre page par le jayein)
+        if (link.hostname === window.location.hostname && link.hash === "") {
+            e.preventDefault();
+            let destination = link.href;
+            
+            // Body ko fade out karein
+            document.body.style.opacity = '0';
+            document.body.style.transition = '0.5s';
+            
+            // 0.5 second baad naya page kholein
+            setTimeout(() => {
+                window.location.href = destination;
+            }, 500);
+        }
+    });
+});
+        // 1. Text to Speech Logic
+        function speak(text) {
+            window.speechSynthesis.cancel();
+            let msg = new SpeechSynthesisUtterance(text);
+            msg.lang = 'hi-IN';
+            msg.rate = 0.9;
+            window.speechSynthesis.speak(msg);
+        }
+
+        // 2. Font Resizer Logic
+        let baseSize = 18;
+        function changeFontSize(delta) {
+            baseSize += delta;
+            document.body.style.fontSize = baseSize + "px";
+            document.querySelectorAll('h1').forEach(h1 => h1.style.fontSize = (baseSize * 2.5) + "px");
+        }
+        // 1. AUTOMATIC GREETING LOGIC
+function setAutoGreeting() {
+    const hour = new Date().getHours();
+    let message = "";
+    if (hour < 12) message = " Shubh Prabhat (Good Morning)! Aapka din mangalmay ho.";
+    else if (hour < 17) message = " Shubh Dopahar (Good Afternoon)! Hum aapki help ke liye taiyar hain.";
+    else message = " Shubh Sandhya (Good Evening)! CarePulse hamesha aapke saath hai.";
+    
+    document.getElementById('greeting-bar').innerText = message;
+    
+    // Voice se bhi bol kar bataye (Automatic)
+    setTimeout(() => speak(message), 1000); 
+}
+window.onload = setAutoGreeting;
+
+// 2. AUTOMATIC SCROLL BUTTON LOGIC
+let mybutton = document.getElementById("scrollTopBtn");
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        mybutton.style.display = "block";
+    } else {
+        mybutton.style.display = "none";
+    }
+}
+
+function topFunction() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+function toggleMode() {
+    const body = document.body;
+    body.classList.toggle("dark-mode");
+    const btn = document.getElementById("mode-btn");
+    
+    if(body.classList.contains("dark-mode")) {
+        btn.innerHTML = "☀️ Light Mode";
+        body.style.backgroundColor = "#1a1a1a";
+        body.style.color = "#FFFF00"; // High contrast Yellow
+    } else {
+        btn.innerHTML = "🌙 Dark Mode";
+        body.style.backgroundColor = "#ffffff";
+        body.style.color = "#000000";
+    }
+}
+
+function startVoice() {
+    // 1. Browser check (Chrome/Edge support)
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    
+    if (!SpeechRecognition) {
+        alert("Maafi chahte hain, aapka browser voice command support nahi karta. Kripya Chrome use karein.");
+        return;
+    }
+
+    const recognition = new SpeechRecognition();
+    const status = document.getElementById('voice-status');
+    const btn = document.getElementById('mic-btn');
+
+    recognition.lang = 'hi-IN'; // Hindi aur English dono samajh lega
+    recognition.start();
+    
+    status.style.display = 'block';
+    btn.style.background = '#ff4444'; // Recording ke waqt red color
+
+    recognition.onresult = function(event) {
+        const command = event.results[0][0].transcript.toLowerCase();
+        console.log("Aapne bola:", command);
+        status.innerText = "Aapne bola: " + command;
+
+        // COMMANDS LOGIC
+        if (command.includes("appointment") || command.includes("doctor")) {
+            window.location.hash = "appointmentForm"; // Form par jump karega
+            speakOut("Theek hai, main appointment section khol raha hoon.");
+        } 
+        else if (command.includes("dawai") || command.includes("medicine") || command.includes("reminder")) {
+            window.location.hash = "medicine-dashboard"; // Dashboard par jump karega
+            speakOut("Zaroor, aapka medicine reminder yahan hai.");
+        }
+        else if (command.includes("emergency") || command.includes("sos") || command.includes("help")) {
+            document.getElementById('sos-btn').click(); // SOS call trigger karega
+            speakOut("Emergency call lagaya ja raha hai.");
+        }
+        else {
+            speakOut("Maaf kijiye, mujhe samajh nahi aaya. Kripya phir se bole.");
+        }
+
+        setTimeout(() => { status.style.display = 'none'; btn.style.background = '#007bff'; }, 3000);
+    };
+
+    recognition.onerror = function() {
+        status.innerText = "Error! Phir se try karein.";
+        btn.style.background = '#007bff';
+    };
+}
+
+// AI Voice Reply (Seniors ko jawab dene ke liye)
+function speakOut(text) {
+    const synth = window.speechSynthesis;
+    const utterThis = new SpeechSynthesisUtterance(text);
+    utterThis.lang = 'hi-IN';
+    synth.speak(utterThis);
+}
+
+// Appointment Save karne ka function
+window.handleFormSubmit = async function(event) {
+    event.preventDefault();
+    
+    // HTML se data uthana
+    const name = document.querySelector('input[placeholder="Naam likhein"]').value;
+    const phone = document.querySelector('input[placeholder="Mobile Number"]').value;
+    // Aapne video mein buttons dikhaye hain (Medical/Sahara), unki value bhi le sakte hain
+    
+    if(!name || !phone) return alert("Kripya naam aur number bharein");
+
+    try {
+        await addDoc(collection(db, "appointments"), {
+            patientName: name,
+            patientPhone: phone,
+            type: "General", // Ise aap dynamic bhi bana sakte hain
+            timestamp: new Date()
+        });
+        alert("Success! Aapka appointment book ho gaya aur Firebase mein save ho gaya.");
+        event.target.reset(); // Form saaf karne ke liye
+    } catch (e) {
+        alert("Error: " + e.message);
+    }
+};
+  
+
+  </script>
+    
+    <button onclick="topFunction()" id="scrollTopBtn" title="Go to top">↑ Top</button>
+
+
+<div id="greeting-bar" style="text-align:center; padding: 10px; background: var(--accent-teal); color: black; font-weight: bold; font-size: 20px;">
+    Namaste! CarePulse mein aapka swagat hai.
+</div>
+
+   
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+  // 1. AAPKI CONFIG (Yahan apni API Key aur IDs dalo jo screen par dikh rahi hain)
+  const firebaseConfig = {
+    apiKey: "AIzaSyD0GUjFOHfRrCqnyRdLiQYMreN67U9_gAg",
+  authDomain: "carepulse-63d5c.firebaseapp.com",
+  projectId: "carepulse-63d5c",
+  storageBucket: "carepulse-63d5c.firebasestorage.app",
+  messagingSenderId: "955333385466",
+  appId: "1:955333385466:web:38e7c6106744c46c2cfd43",
+  measurementId: "G-VLE3CXBM5Q"
+};
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // --- FEATURE 1: APPOINTMENT FORM ---
+  window.handleFormSubmit = async function(event) {
+    event.preventDefault();
+    const name = document.querySelector('input[placeholder="Naam likhein"]').value;
+    const phone = document.querySelector('input[placeholder="Mobile Number"]').value;
+
+    try {
+      await addDoc(collection(db, "appointments"), {
+        patientName: name,
+        patientPhone: phone,
+        timestamp: new Date()
+      });
+      alert("Success! Data Firebase mein save ho gaya.");
+    } catch (e) {
+      alert("Error: " + e.message);
+    }
+  };
+ 
+</script>
+
+</body>
+</html>
