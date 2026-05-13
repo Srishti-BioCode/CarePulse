@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us - CarePulse</title>
+    <style>
+        /* 1. Animation Define Karein */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 2. Poore Body par Animation Apply Karein */
+body {
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* 3. Link Click Transition (Optional) */
+a {
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.2);
+}
+        body { background: #121212; color: white; font-family: sans-serif; padding: 5%; line-height: 1.8; }
+        .container { max-width: 800px; margin: auto; background: #1e1e1e; padding: 40px; border-radius: 20px; border: 2px solid #333; }
+        h1 { color: #00C48C; font-size: 45px; }
+        p { font-size: 22px; color: #ccc; }
+        .back-btn { display: inline-block; margin-top: 30px; background: #FF7A59; color: white; padding: 15px 30px; text-decoration: none; border-radius: 10px; font-weight: bold; }
+        .audio-btn { background: #333; color: white; border: 1px solid #555; padding: 10px; border-radius: 10px; cursor: pointer; margin-bottom: 20px; }
+    .team-section {
+    padding: 60px 20px;
+    background: black;
+    text-align: center;
+}
+
+.team-grid {
+    display: grid;
+    /* Laptop par 3 ya 5 ki line, phone par 1 */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.team-card {
+    background:lightgrey; /* CarePulse Theme Color */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.team-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #00b894;
+    margin-bottom: 15px;
+}
+
+.team-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.team-card .role {
+    color: #00b894;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+.team-card .task {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 10px;
+    line-height: 1.4;
+    padding: 0 10px;
+}
+    
+    
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="audio-btn" onclick="speak('CarePulse ek aisi sanstha hai jo buzurgon ki dekhbhaal aur unki khushi ke liye kaam karti hai.')">🔊 Suniye</button>
+        <h1>Hamare Baare Mein</h1>
+        <p>CarePulse ka maksad seniors ko wo samman aur care dena hai jiske wo haqdaar hain. Hum sirf medical help nahi, balki dosti aur sahara bhi dete hain.</p>
+        <p>Hamari team mein mahir doctors aur compassionate caregivers hain jo 24 ghante aapki seva mein hazir hain.</p>
+<section class="team-section" id="about-us">
+    <h2 class="section-title">Capstone Project Team</h2>
+    <div class="team-grid">
+        <div class="team-card">
+            <img src="member1.jpg" alt="Team Lead" >
+            <h3>Aapka Naam</h3>
+            <p class="role">Project Manager & Lead</p>
+            <p class="task">Project documentation, timeline tracking aur module integration.</p>
+        </div>
+
+        <div class="team-card">
+            <img src="member2.jpeg" alt="Frontend" >
+            <h3>Srishti Maurya</h3>
+            <p class="role">Frontend Developer</p>
+            <p class="task">UI/UX design, Responsive Navbar aur HTML/CSS handling.</p>
+        </div>
+
+        <div class="team-card">
+            <img src="member3.jpg" alt="Backend" >
+            <h3>Member Name</h3>
+            <p class="role">Backend Specialist</p>
+            <p class="task">Firebase integration, Firestore database rules aur data saving logic.</p>
+        </div>
+
+        <div class="team-card">
+            <img src="member4.jpg" alt="Database" >
+            <h3>Member Name</h3>
+            <p class="role">Database Architect</p>
+            <p class="task">Medical Diary logic, authentication aur real-time data monitoring.</p>
+        </div>
+
+        <div class="team-card">
+            <img src="member5.jpg" alt="QA" >
+            <h3>Member Name</h3>
+            <p class="role">QA Tester & Analyst</p>
+            <p class="task">Bug fixing, Netlify deployment aur project report preparation.</p>
+        </div>
+    </div>
+</section>
+        <a href="index.html" class="back-btn">← Wapas Home Par Jayein</a>
+    </div>
+
+
+    <script>
+        function speak(text) {
+            window.speechSynthesis.cancel();
+            let msg = new SpeechSynthesisUtterance(text);
+            msg.lang = 'hi-IN';
+            window.speechSynthesis.speak(msg);
+        }
+        document.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', e => {
+        // Sirf internal links ke liye (jo dusre page par le jayein)
+        if (link.hostname === window.location.hostname && link.hash === "") {
+            e.preventDefault();
+            let destination = link.href;
+            
+            // Body ko fade out karein
+            document.body.style.opacity = '0';
+            document.body.style.transition = '0.5s';
+            
+            // 0.5 second baad naya page kholein
+            setTimeout(() => {
+                window.location.href = destination;
+            }, 500);
+        }
+    });
+});
+    </script>
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+  // 1. AAPKI CONFIG (Yahan apni API Key aur IDs dalo jo screen par dikh rahi hain)
+  const firebaseConfig = {
+    apiKey: "AIzaSyD0GUjFOHfRrCqnyRdLiQYMreN67U9_gAg",
+  authDomain: "carepulse-63d5c.firebaseapp.com",
+  projectId: "carepulse-63d5c",
+  storageBucket: "carepulse-63d5c.firebasestorage.app",
+  messagingSenderId: "955333385466",
+  appId: "1:955333385466:web:38e7c6106744c46c2cfd43",
+  measurementId: "G-VLE3CXBM5Q"
+};
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // --- FEATURE 1: APPOINTMENT FORM ---
+  window.handleFormSubmit = async function(event) {
+    event.preventDefault();
+    const name = document.querySelector('input[placeholder="Naam likhein"]').value;
+    const phone = document.querySelector('input[placeholder="Mobile Number"]').value;
+
+    try {
+      await addDoc(collection(db, "appointments"), {
+        patientName: name,
+        patientPhone: phone,
+        timestamp: new Date()
+      });
+      alert("Success! Data Firebase mein save ho gaya.");
+    } catch (e) {
+      alert("Error: " + e.message);
+    }
+  };
+</script>
+</body>
+</html>
