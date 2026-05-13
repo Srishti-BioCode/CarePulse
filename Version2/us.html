@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="us.css" />
+    <title>CarePulse | Founders</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💙</text></svg>">
+  </head>
+  <script src="../Home/home.js"></script>
+  <script src="../header/header.js"></script>
+  <body>
+    <header class="header">
+      <!-- TOP BAR -->
+      <div class="topbar">
+        <!-- LEFT -->
+        <div class="brand">
+          <div class="logo">
+            <img src="../Photos/logo.png" alt="CarePulse Logo" />
+          </div>
+
+          <h1>CarePulse</h1>
+          <button class="icon-btn mic-btn" onclick="startVoice()">🎤</button>
+        </div>
+
+        <!-- DESKTOP RIGHT -->
+        <div class="desktop-tools">
+          <!-- SEARCH -->
+          <div class="search-box">
+            <input type="text" placeholder="Search..." />
+            <button><i class="fa-solid fa-magnifying-glass search-icon" style="color: black;"></i></button>
+          </div>
+
+          <!-- DARK MODE FUNCTION -->
+          <button class="tool-btn" id="mode-btn" onclick="toggleMode()">
+            🌞 White Mode
+          </button>
+
+          <!-- FONT SIZE FUNCTIONS -->
+          <button class="tool-btn" onclick="changeFontSize(2)">A+</button>
+          <button class="tool-btn" onclick="changeFontSize(-2)">A-</button>
+
+          <select class="tool-btn lang">
+            <option>English</option>
+            <option>Hindi</option>
+          </select>
+        </div>
+
+        <!-- MOBILE RIGHT -->
+        <div class="mobile-tools">
+          <button class="icon-btn" onclick="toggleSearch()"><i class="fa-solid fa-magnifying-glass search-icon"></i></button>
+
+          <button class="icon-btn" onclick="toggleMenu('accessMenu')" style="color: white;">
+            ⚙️
+          </button>
+          <button
+            class="icon-btn"
+            onclick="toggleMenu('mainNav')"
+            style="font-size: 18px;
+            color: white;"
+          >
+            ☰
+          </button>
+        </div>
+      </div>
+
+      <!-- MOBILE SEARCH -->
+      <div class="mobile-search" id="mobileSearch">
+        <input type="text" placeholder="Search..." />
+      </div>
+
+      <nav class="navbar" id="mainNav">
+        <a href="../Home/Home.html">Home</a>
+        <a href="">Book Now</a>
+        <a href="">Contact</a>
+        <a href="../about/us.html">About Us</a>
+        
+        <a href="" class="pc-only">Services</a>
+        <a href="../Calender/calender.html" class="pc-only">Set Calendar</a>
+        <a href="" class="pc-only">Medicine Reminder</a>
+      </nav>
+
+
+      <!-- ACCESSIBILITY MENU -->
+      <div class="dropdown-menu" id="accessMenu">
+        <!-- DARK MODE -->
+          <button class="tool-btn" id="mode-btn" onclick="toggleMode()">
+            🌞 White Mode
+          </button>
+
+        <!-- TEXT SIZE -->
+        <div class="font-tools">
+          <button class="tool-btn small-btn" onclick="changeFontSize(5)">
+            A+
+          </button>
+          <button class="tool-btn small-btn" onclick="changeFontSize(-5)">
+            A-
+          </button>
+        </div>
+
+        <select>
+          <option>English</option>
+          <option>Hindi</option>
+        </select>
+      </div>
+    </header>
+    <main class="founders-section">
+
+  <h1 class="heading">Meet the Founders</h1>
+  <p class="subtext">
+    We are a passionate team of innovators, creators, and problem solvers dedicated 
+    to building impactful digital experiences and meaningful solutions.
+  </p>
+
+  <div class="card-container">
+
+    <!-- Founder 1 -->
+    <div class="card">
+      <img src="Shivaji.jpg" alt="">
+      <h3>SHIVAJI MAURYA</h3>
+      <p>UI/UX Designer</p>
+
+      <div class="links">
+        <a href="https://shivajimaurya.netlify.app">Portfolio</a>
+        <a href="https://www.linkedin.com/in/shivaji-maurya-25jul2008">LinkedIn</a>
+        <a href="https://www.github.com/shivajiii07">GitHub</a>
+      </div>
+    </div>
+    
+    <!-- Founder 2 -->
+    <div class="card">
+      <img src=".jpg" alt="">
+      <h3>SRISHTI MAURYA</h3>
+      <p>Frontend Developer</p>
+
+      <div class="links">
+        <a href="">Portfolio</a>
+        <a href="">LinkedIn</a>
+        <a href="">GitHub</a>
+      </div>
+    </div>
+
+    <!-- Founder 3 -->
+    <div class="card">
+      <img src=".jpg" alt="">
+      <h3>SHASHANK MEHTA</h3>
+      <p>Backend Framework & System Architecture</p>
+
+      <div class="links">
+        <a href="">Portfolio</a>
+        <a href="">LinkedIn</a>
+        <a href="">GitHub</a>
+      </div>
+    </div>
+
+    <!-- Founder 4 -->
+    <div class="card">
+      <img src=".jpg" alt="">
+      <h3>SURAJ MAURYA</h3>
+      <p>Accessibility Logic & Audio Integration</p>
+
+      <div class="links">
+        <a href="">Portfolio</a>
+        <a href="">LinkedIn</a>
+        <a href="">Twitter</a>
+      </div>
+    </div>
+
+    <!-- Founder 5 -->
+    <div class="card">
+      <img src=".jpg" alt="">
+      <h3>HIMANSHU MEENA</h3>
+      <p>Testing, Documentation & Compliance</p>
+
+      <div class="links">
+        <a href="">Portfolio</a>
+        <a href="">LinkedIn</a>
+        <a href="">Instagram</a>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+    <hr style="border: 1px solid rgb(36, 36, 36)" />
+    <footer class="footer">
+      <div class="footer-logo">CarePulse</div>
+
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>Company</h3>
+          <a href="#">About Us</a>
+          <a href="#">Our Mission</a>
+          <a href="#">Care Team</a>
+          <a href="#">Investor Relations</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Services</h3>
+          <a href="#services">Medical Monitoring</a>
+          <a href="#services">Companion Care</a>
+          <a href="#services">Water Tracking</a>
+          <a href="#appointment">Book Appointment</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Support</h3>
+          <a href="tel:100">Emergency Help</a>
+          <a href="https://wa.me/9454523855">WhatsApp Help</a>
+          <a href="#">FAQs</a>
+          <a href="#">Report Issue</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Legal</h3>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+          <a href="#">Security</a>
+        </div>
+
+        <!-- <div class="footer-col social-col">
+          <h3>Connect</h3>
+          <div class="social-icons">
+            <a href="#">📘</a>
+            <a href="#">📷</a>
+            <a href="#">▶</a>
+            <a href="#">💬</a>
+          </div> -->
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        CarePulse is made for a purpose to contribute our Society with ❤️
+        <br /><br />
+        © 2026 CarePulse™ | All rights reserved.
+      </div>
+    </footer>
+</body>
+</html>
