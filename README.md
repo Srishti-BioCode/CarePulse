@@ -43,3 +43,25 @@
 ├── js/              # Core Logic (Voice API, Alarm, Calendar)
 ├── index.html       # Main Dashboard
 └── README.md        # Project Documentation
+
+
+### Accessibility Logic & Audio Integration
+- Dynamic font resizing (A+ / A-)
+- Hindi Text-to-Speech support
+- Audio guidance system (Suniye System)
+- Voice-assisted navigation
+- Accessibility-focused UI improvements
+- Elderly-friendly interaction design
+
+### Technologies Used
+- HTML5
+- CSS3
+- JavaScript
+- Speech Synthesis API
+
+### Features Implemented
+- High contrast accessibility support
+- Audio buttons for voice guidance
+- Simplified navigation system
+- Improved readability for senior citizens
+- Reduced cognitive load
